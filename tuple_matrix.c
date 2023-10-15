@@ -31,7 +31,7 @@ void main() {
     b[0].columns = column;
     b[0].value = count;
     printf("The tuple matrix:\n");
-    printf("Rows\tColumns\tValues");
+    printf("Rows\tColumns\tValues\n");
     for (i = 0; i < count+1; i++) {
         printf("%d %d %d\n", b[i].rows, b[i].columns, b[i].value);
     }

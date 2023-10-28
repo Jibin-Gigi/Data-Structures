@@ -1,16 +1,18 @@
 #include<stdio.h>
 int front=-1,rear=-1,item,limit,queue[100];
 void Enqueue() {
-     if (front == -1 && rear == -1) {
+     if ((rear + 1) % limit == front) {
+        printf("Overflow\n");
+        }
+     else if (front == -1 && rear == -1) {
         front = 0;
         rear = 0;
         printf("Enter the value to be stored: ");
         scanf("%d", &item);
         queue[rear] = item;
     } 
-     else if ((rear + 1) % limit == front) {
-        printf("Overflow\n");
-    }
+     
+    
      else {
         rear = (rear + 1) % limit;
         printf("Enter the value to be stored: ");
@@ -24,10 +26,12 @@ void Dequeue() {
         printf("Underflow\n");
     } else if (front == rear) {
         item = queue[front];
+        printf("%d is removed",queue[front]);
         front = -1;
         rear = -1;
     } else {
         item = queue[front];
+        printf("%d is removed",queue[front]);
         front = (front + 1) % limit;
     }
 }
@@ -42,10 +46,10 @@ void Peek(){
          }
 }
 void Display(){
-       if(rear<front)
+       if(front == -1 && rear == -1)
          printf("The queue is empty\n");
        else{
-         printf("the queue:");
+         printf("The queue:");
          for(int i=front;i<=rear;i++)
          {
          printf("%d\t",queue[i]);
@@ -62,7 +66,7 @@ int main() {
     scanf("%d", &limit);
 
     do {
-        printf("Enter the choice: \n1.Insertion\n2.Deletion\n3.Print topmost element\n4.Display\n5.Exit\n");
+        printf("Enter the choice: \n1.Insertion\t2.Deletion\t3.Print peek element\t4.Display\t5.Exit\n");
         scanf("%d", &choice);
 
         switch (choice) {

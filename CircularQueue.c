@@ -104,3 +104,13 @@ void display()
    }
   printf("\n");
 }
+
+void Peek(){
+      if(rear<front)
+         printf("The queue is empty\n");
+      else
+         {
+         printf("Peek value of queue=%d",a[front]);
+         printf("\n");
+         }
+}

@@ -50,7 +50,7 @@ void Display(){
          printf("The queue is empty\n");
        else{
          printf("The queue:");
-         for(int i=front;i<=rear;i++)
+         for(int i=front;i!=rear;(i+1)%limit)
          {
          printf("%d\t",queue[i]);
          }

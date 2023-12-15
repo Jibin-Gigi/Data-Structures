@@ -11,7 +11,7 @@ int priority(char);
 
 int main() {
     push('(');
-    char infix[20], *p;
+    char infix[50], *p;
     printf("Enter the infix expression :\n");
     scanf("%s", infix);
     p = infix;

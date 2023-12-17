@@ -41,7 +41,7 @@ int main() {
         pop();
     }
 
-    printf("Postfix expression: ");
+    printf("Postfix expression:\n ");
     print();
 
     return 0;

@@ -18,6 +18,8 @@ int main() {
     scanf("%s", infix);
     p = infix;
 
+    push('('); // Step 1
+
     while (*p != '\0') {
         if (isalnum(*p)) {
             print();
@@ -25,11 +27,16 @@ int main() {
         } else if (*p == '(') {
             push(*p);
         } else if (*p == ')') {
-            pop();
+            while (stack[top] != '(') {
+                pop();
+            }
+            pop(); // Remove the left parenthesis
         } else if (priority(*p) > priority(stack[top])) {
             push(*p);
-        } else if (priority(*p) <= priority(stack[top])) {
-            pop();
+        } else {
+            while (priority(*p) <= priority(stack[top]) && stack[top] != '(') {
+                pop();
+            }
             push(*p);
         }
 
@@ -71,8 +78,12 @@ void push(char element) {
 }
 
 void print() {
+    printf("Current output: ");
     for (int j = 0; j < size; j++) {
-        printf("%c", output[j]);
+        if (output[j] != '(' && output[j] != ')') {
+            printf("%c", output[j]);
+        }
     }
     printf("\n");
 }
+
